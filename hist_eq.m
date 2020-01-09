@@ -1,14 +1,20 @@
 clc;clear all;close all;
 ip=input('enter name of image');
-image=imread(ip);
+image=imread(ip); %to get the input image
 figure;
 imshow(image);
-gray_image=rgb2gray(image);
+gray_image=rgb2gray(image);  %converting original image to grayscale
 figure;
-imshow(uint8(gray_image));
-arr=gray_image'; arr=arr(:);  comp_arr=arr';
-sorted_arr=sort(comp_arr); E=unique(sorted_arr); 
-zero_arr=zeros(1,length(E)); var_1=1; count=0;
+imshow(uint8(gray_image)); %modifying image array to 8 bit unsigned integer form
+arr=gray_image'; %transpose of the modified image matrix
+arr=arr(:);  %converting matrix to array
+comp_arr=arr';  %transpose of the array
+
+sorted_arr=sort(comp_arr); %sort array in ascending order
+unique_arr=unique(sorted_arr); %gives only single occurrence of an element
+zero_arr=zeros(1,length(unique_arr)); %array of zeros having length equal to unique_arr
+var_1=1; count=0;
+
 for j=1:1:length(E)
     for k=1:1:length(sorted_arr)
         if E(1,j)==sorted_arr(1,k)
